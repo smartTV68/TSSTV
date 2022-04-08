@@ -1,0 +1,1 @@
+mysqldump -u tss -p DBScuola > /home/tss/"definire dove salvare"/datadump.sql

@@ -1,0 +1,109 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 31 mar 2022, 14:21:18
+    Author     : tss
+*/
+
+h1 {
+    color: #3632bc;
+    text-align: center;
+}
+
+#titolo {
+    font-family: verdana;
+}
+
+/*il punto davanti serve ad identificare una classe*/
+.sfondoy{
+    background-color: yellow;
+}
+
+.sfondo{
+    background-color: #90eb50;
+}
+
+.featured_img{
+
+    width:300px;
+    height:300px;
+}
+
+#main span {
+    font-size: 15px;
+    color: fuchsia;
+}
+
+table {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.info p img{
+    float: left;
+    max-width: 300px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+
+}
+
+.info p {
+    overflow: auto;
+}
+/*larghezza primacolonna tabella dati*/
+
+.dati th:nth-child(1){
+    width:50%;
+}
+
+.divgallery{
+    overflow: auto;
+}
+
+.item-gallery {
+    float: left;
+    width: 33.33%;
+    padding: 0px;
+    border: 0px;
+    text-align: center;
+}
+
+.item-gallery img{
+    width: 100%;
+    border: 0px;
+}
+
+form{
+background-color: lightgray;    
+}
+
+@media screen and (max-width: 600px){
+    .item-gallery {
+        float: none;
+        width: 100%;
+    }
+
+    .item-gallery img{
+        width: 95%;
+    }
+
+    .info p img{
+        float: none;
+        max-width: 480px;
+     }
+
+    h1{
+        font-size: 30px;
+    }
+    h2{
+        font-size: 18px;
+    }
+
+    h3{
+        font-size: 14px;
+    }
+}
