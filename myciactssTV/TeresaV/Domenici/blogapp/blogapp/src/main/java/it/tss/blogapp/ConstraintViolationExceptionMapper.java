@@ -20,7 +20,7 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
     public Response toResponse(ConstraintViolationException ex) {
         Response.ResponseBuilder rb = Response.status(Response.Status.BAD_REQUEST);
         ex.getConstraintViolations()
-                .forEach(v -> rb.header("cased-by-" + v.getPropertyPath().toString(), v.getMessage()));
+                .forEach(v -> rb.header("caused-by-" + v.getPropertyPath().toString(), v.getMessage()));
         return rb.build();
     }
 

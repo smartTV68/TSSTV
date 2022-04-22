@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 }
 
 .full{
-     with: 100%;
+     width: 100%;
 }
 
 .inner {
@@ -24,6 +24,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     margin: 0px auto;
 
 }
+
+#imgfull {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 .newsl{
     overflow: auto;
     display: flex;
@@ -33,14 +41,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     padding: 5px;
     border: 2px;
     text-align: center;
+    display: inline-block;
 }
 
 .newsl img{
     width: 100%;
-    border: 0px;
+    border: 5px;
 }
 
-footer{
+#footer{
     fixed:bottom;
     overflow: auto;
     display: flex;
@@ -51,5 +60,6 @@ footer{
     border: 2px;
     text-align: center;
     border: solid;
+    display: inline-grid;
 }
 

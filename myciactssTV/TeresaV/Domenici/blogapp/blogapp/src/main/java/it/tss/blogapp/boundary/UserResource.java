@@ -31,7 +31,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
  */
 public class UserResource {
     
-    @Inject
+   @Inject
     private UserStore store;
 
     @Inject
@@ -46,7 +46,6 @@ public class UserResource {
         @APIResponse(responseCode = "200", description = "Utente ritornato con successo"),
         @APIResponse(responseCode = "404", description = "Utente non trovato")
     })
-    
     public User find() {
         return store.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
     }
@@ -65,7 +64,6 @@ public class UserResource {
     }
 
     @DELETE
-
     @Operation(description = "Elimina una risorsa Utente tramite l'ID")
     @APIResponses({
         @APIResponse(responseCode = "200", description = "Utente eliminato con successo"),
@@ -113,5 +111,4 @@ public class UserResource {
     public void setId(Long id) {
         this.id = id;
     }
-
 }

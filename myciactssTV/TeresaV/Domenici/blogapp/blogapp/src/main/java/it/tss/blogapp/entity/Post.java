@@ -13,6 +13,7 @@ import java.util.Objects;
 import javax.json.Json;
 import javax.json.JsonObject;
 import java.util.Set;
+import java.util.TreeSet;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.persistence.CollectionTable;
@@ -56,7 +57,8 @@ public class Post extends BaseEntity {
             joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private Set<Tag> tags;
+    
+    private Set<Tag> tags = new TreeSet<>();
 
     public JsonObject toJsonSlice() {
         return Json.createObjectBuilder()

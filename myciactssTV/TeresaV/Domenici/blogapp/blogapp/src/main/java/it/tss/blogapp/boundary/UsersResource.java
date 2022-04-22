@@ -22,6 +22,7 @@ import javax.json.stream.JsonCollectors;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.NotFoundException;
@@ -129,16 +130,17 @@ public class UsersResource {
     }
     //qui scattano le sottorisorse. Quando controllo id lo fa attreverso u8na sottorisorsa singolo user
     //UserResource non ha path perchè gli arriva da UsersR
-   /* @Path("{id}")
+    @Path("{id}")
     @RolesAllowed("users")
     public UserResource find(@PathParam("id") Long id) {
-        if(Long.parseLong(token.getSubject()) != id){
+        if (Long.parseLong(token.getSubject()) != id) {
+            System.out.println("id utente non corrispondente");
             throw new ForbiddenException();
         }
         UserResource sub = rc.getResource(UserResource.class);
         sub.setId(id);
         return sub;
-    }*/
+    }
 
 
 }
