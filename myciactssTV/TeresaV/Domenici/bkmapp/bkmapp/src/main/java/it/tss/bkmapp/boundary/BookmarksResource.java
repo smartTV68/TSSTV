@@ -56,15 +56,16 @@ public class BookmarksResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Bookmark update(@PathParam("id") Long id, @Valid Bookmark entity) {
-        throw new UnsupportedOperationException();
+    public Bookmark update(@PathParam("id") Long id, Bookmark entity) {
+        return store.save(entity);
     }
 
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public void delete(@PathParam("id") Long id) {
-        throw new UnsupportedOperationException();
+    public void delete(@PathParam("id") Long id)  {
+        Bookmark found = store.find(id).orElseThrow(() -> new NotFoundException("bookmark non trovato. id=" + id));
+        store.delete(found.getId());
     }
 
     @GET

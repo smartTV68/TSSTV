@@ -1,0 +1,1 @@
+create table t_OrdersDetailsOld as select * from orderdetails limit 0

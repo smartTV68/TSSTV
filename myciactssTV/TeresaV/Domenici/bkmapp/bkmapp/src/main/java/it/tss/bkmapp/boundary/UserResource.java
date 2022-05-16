@@ -96,7 +96,7 @@ public class UserResource {
         @APIResponse(responseCode = "200", description = "Elenco ritornato con successo")
     })
     
-    public Response createBookmark(@Valid Bookmark entity) {
+    public Response createBookmark(Bookmark entity) {
         Bookmark saved = bookmarkStore.save(entity);
         return Response.status(Response.Status.CREATED)
                 .entity(saved)

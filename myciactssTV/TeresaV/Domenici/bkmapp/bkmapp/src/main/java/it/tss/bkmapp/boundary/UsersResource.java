@@ -128,8 +128,8 @@ public class UsersResource {
                 .entity(saved)
                 .build();
     }
-    //qui scattano le sottorisorse. Quando controllo id lo fa attreverso u8na sottorisorsa singolo user
-    //UserResource non ha path perchè gli arriva da UsersR
+    //qui scattano le sottorisorse. Quando controllo id lo fa attraverso una sottorisorsa singolo user
+    //UserResource non ha path perchè gli arriva da UsersResource
     @Path("{id}")
     @RolesAllowed("users")
     public UserResource find(@PathParam("id") Long id) {

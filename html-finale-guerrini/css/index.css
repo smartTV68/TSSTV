@@ -1,0 +1,8 @@
+#webapp{
+    background-image: url("/img/ServiziWeb.png");
+    min-height: 450px;
+  }
+
+ #webapp .titolo1{
+     color: white;
+ }

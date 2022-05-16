@@ -1,0 +1,10 @@
+CREATE EVENT event_log
+ON SCHEDULE EVERY 1 MINUTE
+STARTS CURRENT_TIMESTAMP
+ENDS CURRENT_TIMESTAMP + INTERVAL 1 HOUR
+DO
+   INSERT INTO t_log(message)
+   VALUES('Test MySQL recurring Event');
+   
+   
+   drop EVENT event_log;

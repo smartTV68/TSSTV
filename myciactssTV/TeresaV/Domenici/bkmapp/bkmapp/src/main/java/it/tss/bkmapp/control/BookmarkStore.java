@@ -31,7 +31,7 @@ public class BookmarkStore {
     
         
     public List<Bookmark> all() {
-        return em.createQuery("select e from Bookmark e order by e.bkmark ASC", Bookmark.class)
+        return em.createQuery("select e from Bookmark e order by e.bkmark", Bookmark.class)
                 .getResultList();
     }
 
