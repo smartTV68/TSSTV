@@ -1,3 +1,6 @@
+
+
+
 console.log("index start ok...");
 document.querySelector('btnlog').addEventListener("click", e=> onLogin(e));
 document.querySelector('btnreg').addEventListener("click", e=> onRegistration(e));
@@ -6,8 +9,8 @@ document.querySelector('btnreg').addEventListener("click", e=> onRegistration(e)
 //controllare validità dei form
 const onLogin = (e) => {
     e.preventDefault();
-    if (!document.forms[0].checkValidity){
-        document.forms[0].reportValidity();
+    if (!document.forms.checkValidity){
+        document.forms.reportValidity();
         return;
     }
     doLogin(document.querySelector('#usr').value.document.querySelector('#pwd').value)
@@ -19,6 +22,7 @@ const onRegistration = (e) => {
     console.log("onRegistration()  code...", e);
     window.location= 'registration.html';
 }
+
 
 const doLogin = async(usr,pwd)=>{}
     const resp = fetch("http://localhost:8080/bkmapp/resources/users/login", {
@@ -32,9 +36,13 @@ const doLogin = async(usr,pwd)=>{}
     body: JSON.stringify({usr,pwd})
 })
 .then((response) => response.json())
-.then((data) => console.log(data))
-.catch((err) => {
-  console.log(err);
- });
+//Then with the data from the response in JSON...
+.then((data) => {
+  console.log('Success:', data);
+})
+//Then with the error generated...
+.catch((error) => {
+  console.error('Error:', error);
+});
 
-
+   

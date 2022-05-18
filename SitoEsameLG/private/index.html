@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wide Web World</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/styletv.css">
+    <link rel="stylesheet" href="/css/private.css">
+    <script src="/js/navbar.js"></script>
+    <script src="/js/login.js"></script>
+</head>
+
+<body>
+    <!--- da includere via anjs-->
+    <div class="topnav" id="myTopnav">
+        <a href="/index.html" class="active">Home</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <div class="dropdown">
+            <button class="dropbtn">Servizi
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/index.html#webapp">Web-App</a>
+                <a href="/index.html#network">Network</a>
+                <a href="/index.html#solution">Solution&nbsp;Consulting</a>
+            </div>
+        </div>
+        <a href="/private/index.html">Area Privata</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveHamburger()">&#9776;</a>
+    </div>
+    <div id="page">
+        <div id="presentazione" class="container">
+            <h2 class="titolo1" style="text-transform: capitalize;">WebCore Web solution on the Net</h2>
+            <h2 class="titolo1">AREA PRIVATA</h2>
+            <p style="text-align: center;">Servizi disponibili solo a utenti riconosciuti</p>
+        </div>
+        <div id="logreg">
+            <div id="divlogin" class="container">
+                <h3>Login utente</h3>
+                <form name="flogin">
+                    <input type="text" id="lusr" name="usr" placeholder="ins username o mail">
+                    <input type="password" id="lpwd" name="pwd" placeholder="ins password">
+                    <input type="button" id="btnlog" onclick="dologin()" value="Login">
+                      
+                </form>
+           
+            </div>
+            <div id="divreg" class="container">
+                <h3>Registrazione utente</h3>
+                <form name="freg">
+                    <input type="text" id="rusr" name="email" placeholder="ins username o mail">
+                    <input type="password" id="rpwd" name="pwd" placeholder="ins password">
+                    <input type="text" id="first_name" name="first_name" placeholder="ins nome">
+                    <input type="text" id="last_name" name="last_name" placeholder="ins cognome">
+                    <input type="button" id="btnreg" value="Crea Account">
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+    <footer>
+        <div class="creator">
+            <h4>Copyright 2022 by TSS. All Rights Reserved.</h4>
+        </div>
+        <div class="contatti">
+            <h4>Contatti</h4>
+            <ul>
+                <li>qweqwe qwe</li>
+                <li>qweqwe qwe</li>
+                <li>qweqwe qwe</li>
+            </ul>
+        </div>
+        <div class="creditsprivacy">
+            <h4>Privacy</h4>
+            <ul>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="privacy.html#condizioni">Condizioni Generali</a></li>
+                <li><a href="twitter.html">Twitter</a> - <a href="facebook.html">Facebook</a></li>
+
+            </ul>
+
+        </div>
+    </footer>
+</body>
+
+</html>
