@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title>Export html table to csv</title>
+</head>
+
+<body>
+    <hr>
+    <button id="caricacsv" onclick="caricaCSV()">carica csv</button>
+    <hr>
+    <div id="divcsv">----</div>
+    <hr>
+    <table id="dataTable" class="greenTable">
+        <thead id="theadid">
+            <tr>
+                <th>Lname</th>
+                <th>Fname</th>
+                <th>Mail</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyid">
+            <tr>
+                <td>Verdi</td>
+                <td>Giorgio</td>
+                <td>giorgio.verdi@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Dix</td>
+                <td>Gioele</td>
+                <td>gioele.dix@libero.it</td>
+            </tr>
+            <tr>
+                <td>Rossi</td>
+                <td>Daniela</td>
+                <td>daniela.rossi@libero.it</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="export_button" type="button" class="button">Esporta i dati</button>
+    <script src="TableCSVExporter.js"></script>
+    <script>
+        const dataTable = document.getElementById("dataTable");
+        const btnExportToCSV = document.getElementById("export_button");
+
+        btnExportToCSV.addEventListener("click", () => {
+            const exporter = new TableCSVExporter(dataTable);
+            const csvOutput = exporter.convertToCSV();
+            const csvBlob = new Blob([csvOutput], { type: " text/csv" });
+            const blobUrl = URL.createObjectURL(csvBlob);
+            const anchorElement = document.createElement("a");
+
+            anchorElement.href = blobUrl;
+            anchorElement.download = "table-export.csv";
+            anchorElement.click();
+
+            setTimeout(() => {
+
+                URL.revokeObjectURL(blobUrl);
+            }, 500);
+
+        })
+
+
+        function caricaCSV() {
+            url="table-export.csv";
+           // url = "http://gugudesign.it/its/table-export.csv";
+          
+                fetch(url,
+                    {
+                        method: "GET",
+                        mode: 'no-cors',
+                        headers:
+                        {  'Content-Type': 'text/plain',
+                           
+                        }
+                    }
+                )
+                    .then(response => {
+                        let ris=response.text()
+                        return ris;
+                    })
+                    .then(csv => {
+                        console.log(csv);
+                        creaTable(csv);
+                    })
+                    .catch(err => {
+                        alert("errore: " + err.toString())
+
+                    })
+        }
+        function creaTable(csv) {
+            let lines = csv.split("\n");
+            //array righe csv riga 0 testata righe altre record
+            let testata = lines[0].split(",");
+            let trh = "";
+            trh += "<thead id='theadid'><tr>";  //"<tr><th>fname</th><th>lname</th>.... </tr>"
+            for (let i = 0; i < testata.length; i++) {
+                trh += "<th>" + testata[i] + "</th>";
+            }
+            trh += "</tr></thead>";
+            // fine costruzione riga th
+            let trd = "";
+            for (let r = 1; r < lines.length; r++) {
+                let record = lines[r].split(",");
+                trd += "<tr>";  //"<tr><td>mario</td><td>rossi</td>.... </tr>"
+                for (let i = 0; i < record.length; i++) {
+                    trd += "<td>" + record[i] + "</td>";
+                }
+                trd += "</tr>";
+            }
+            let tablehtml ="<table class='greenTable'>" + trh + trd + "</table>";
+            document.querySelector("#divcsv").innerHTML=tablehtml;
+
+        }
+
+    </script>
+</body>
+
+</html>

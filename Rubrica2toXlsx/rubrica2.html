@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+    <table id="trubrica" class="tabler" style="width:400px">
+        <thead id="theadid">
+            <tr>
+                <th>Lname</th>
+                <th>Fname</th>
+                <th>Mail</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyid">
+            <tr>
+                <td>Verdi</td>
+                <td>Giorgio</td>
+                <td>giorgio.verdi@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Dix</td>
+                <td>Gioele</td>
+                <td>gioele.dix@libero.it</td>
+            </tr>
+            <tr>
+                <td>Rossi</td>
+                <td>Daniela</td>
+                <td>daniela.rossi@libero.it</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="export_button">Esporta i dati</button>
+
+    
+
+    <script>
+
+function html_table_to_excel(type)
+    {
+        var data = document.getElementById('trubrica');
+
+        var file = XLSX.utils.table_to_book(data, {sheet: "sheet1"});
+
+        XLSX.write(file, { bookType: type, bookSST: true, type: 'base64' });
+
+        XLSX.writeFile(file, 'file.' + type);
+    }
+
+    const export_button = document.getElementById('export_button');
+
+    export_button.addEventListener('click', () =>  {
+        html_table_to_excel('xlsx');
+    });
+
+        
+    </script>
+
+</body>
+
+</html>

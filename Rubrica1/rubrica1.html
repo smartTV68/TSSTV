@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    
+    </head>
+    
+    <body>
+        <table id="trubrica" class="tabler" style="width:400px">
+            <thead id="theadid">
+                <tr>
+                    <th>Lname</th>
+                    <th>Fname</th>
+                    <th>Mail</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyid">
+                <tr>
+                    <td>Verdi</td>
+                    <td>Giorgio</td>
+                    <td>giorgio.verdi@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Dix</td>
+                    <td>Gioele</td>
+                    <td>gioele.dix@libero.it</td>
+                </tr>
+                <tr>
+                    <td>Rossi</td>
+                    <td>Daniela</td>
+                    <td>daniela.rossi@libero.it</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <button id="export_button">Esporta i dati</button>
+    
+        
+    
+        <script>
+    
+            let res = document.getElementById('trubrica').rows;
+            let tableText;
+    
+            for (let i = 0; i < res.length; i++) {
+                for (let j = 0; j < res[i].cells.length; j++) {
+                    if (j == 0) {
+                        tableText += res[i].cells[j].textContent;
+                    } else {
+                        tableText += "," + res[i].cells[j].textContent;
+                    }
+                }
+                tableText += "\n";
+               
+            }
+            console.log(tableText);
+            
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(tableText);
+                
+                console.log(tableText);
+                
+            	if (window.navigator.msSaveBlob) { // IE 10+
+            		//alert('IE' + csv);
+            		window.navigator.msSaveOrOpenBlob(new Blob([tableText], {type: "text/plain;charset=utf-8;"}), "csvname.csv")
+            	} 
+            	else {
+            		$(this).attr({ 'download': filename, 'href': csvData, 'target': '_blank' }); 
+            	}
+        
+        
+        // This must be a hyperlink
+        $("#xx").on('click', function (event) {
+            
+            exportTableToCSV.apply(this, [$('#trubrica'), 'export.csv']);
+            
+            // IF CSV, don't do event.preventDefault() or return false
+            // We actually need this to be a typical hyperlink
+        });
+    
+          
+    
+            
+        </script>
+    
+    </body>
+    
+    </html>
