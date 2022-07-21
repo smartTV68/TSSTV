@@ -1,0 +1,13 @@
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/entity/UserRoles.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/security/JWTManager.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/entity/User.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/control/UserStore.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/security/SecurityEncoding.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/airhacks/service/OptionRequestFilter.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/airhacks/service/JAXRSConfiguration.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/entity/BaseEntity.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/boundary/Credential.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/airhacks/service/CorsResponseFilter.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/boundary/UsersResources.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/security/JwtTokenException.java
+/media/tss/INTENSO/EsameVercellino/ESV_Backend/esamevercellino/esamevercellino/src/main/java/airhacks/service/ping/boundary/PingResource.java
