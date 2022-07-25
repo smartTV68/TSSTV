@@ -145,7 +145,7 @@
             $scope.viewshow = false;
             $scope.login = function () {
                 let req = {
-                    url: "https://bkmapp.tssdev.it/resources/users/login",
+                    url: "https://localhost:8080/esamevercellino/resources/users/login",
                     method: "POST",
                     data: { usr: $scope.usr, pwd: $scope.pwd },
                     headers: {
@@ -178,7 +178,7 @@
                 idok = idok * 1;
                 if ($scope.shared == "true") sh = true;
                 let req = {
-                    url: "https://bkmapp.tssdev.it/resources/users/" +
+                    url: "https://localhost:8080/esamevercellino/resources/users/" +
                         sessionStorage.getItem("myid") + "/bkms",
                     method: "POST",
                     data: {
@@ -255,7 +255,7 @@
 
             $scope.getMyBkms = function (pag) {
 
-                let myurl = "https://bkmapp.tssdev.it/resources/users/" +
+                let myurl = "https://localhost:8080/esamevercellino/resources/users/" +
                     sessionStorage.getItem("myid") + "/bkms/?page=" + pag;
                 let req = {
                     url: myurl,
@@ -299,7 +299,7 @@
                 $scope.allbkms = [];
                 for (let pag = 1; pag <= numpag; pag++) {
 
-                    let myurl = "https://bkmapp.tssdev.it/resources/users/" +
+                    let myurl = "https://localhost:8080/esamevercellino/resources/users/" +
                         sessionStorage.getItem("myid") + "/bkms/?page=" + pag;
                     let req = {
                         url: myurl,
@@ -329,7 +329,7 @@
 
             };// fine metodo getMyBkms() 
             $scope.viewBkm = function (link) {
-                let myurl = "https://bkmapp.tssdev.it/resources" + link;
+                let myurl = "https://localhost:8080/esamevercellino/resources" + link;
                 let req = {
                     url: myurl,
                     method: "GET",

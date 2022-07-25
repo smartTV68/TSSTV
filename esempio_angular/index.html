@@ -61,7 +61,7 @@
 
     function creaBKM() {
         let id= sessionStorage.getItem("myid");
-        let url = "https://bkmapp.tssdev.it/resources/users/" +id+ "/bkms";
+        let url = "https://localhost:8080/esamevercellino/resources/users/" +id+ "/bkms";
         let s = document.querySelector("#shared").value;
         let d = document.querySelector("#description").value;
         let u = document.querySelector("#url").value;
@@ -118,7 +118,7 @@
 
 
     function login() {
-        let url = "https://bkmapp.tssdev.it/resources/users/login";
+        let url = "https://localhost:8080/esamevercellino/resources/users/login";
         let usr = document.querySelector("#usr").value;
         let pwd = document.querySelector("#pwd").value;
         let postdata = {
@@ -165,7 +165,7 @@
     }
 
     function getBkms() {
-        let nfile = "https://bkmapp.tssdev.it/resources/bkms";
+        let nfile = "https://localhost:8080/esamevercellino/resources/bkms";
         fetch(nfile)
             .then(ris =>
                 ris.json())

@@ -46,12 +46,12 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
  * @author tss
  */
 @Path("/users")
-@Tag(name = "Gestione Users", description = "Permette di gestire gli utenti di bkmapp")
+@Tag(name = "Gestione Users", description = "Permette di gestire gli utenti di esamevercellino")
 @DenyAll
 public class UsersResources {
     
     @Inject
-    private UserStore storeuser;
+    private UserStore userstore;
     
     @Context
     ResourceContext rc;
@@ -78,7 +78,7 @@ public class UsersResources {
     @RolesAllowed({"Admin","User"})
     public List<User> all(@DefaultValue("1") @QueryParam("page") int page, @DefaultValue("10") @QueryParam("size") int size) {
         System.out.println(token);
-        return storeuser.allPaginated(page,size);
+        return userstore.allPaginated(page,size);
     }
     
     @GET
@@ -92,7 +92,7 @@ public class UsersResources {
     @PermitAll
     public JsonArray allSlice() {
         /*System.out.println(token);*/
-        return storeuser.all().stream().map(User::toJsonSliceName).collect(JsonCollectors.toJsonArray());
+        return userstore.all().stream().map(User::toJsonSliceName).collect(JsonCollectors.toJsonArray());
     }
     
     @GET
@@ -105,7 +105,7 @@ public class UsersResources {
     })
     @RolesAllowed({"Admin","User"})
     public User find(@PathParam("id") Long id) {
-        return storeuser.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
+        return userstore.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
     }
     
     
@@ -120,12 +120,12 @@ public class UsersResources {
     @PermitAll
     public Response create(@Valid User entity) {
         
-        if(storeuser.findUserbyLogin(entity.getEmail()).isPresent()){
+        if(userstore.findUserbyLogin(entity.getEmail()).isPresent()){
             
            return Response.status(Response.Status.PRECONDITION_FAILED).build();
         }
         
-        User saved = storeuser.save(entity);
+        User saved = userstore.save(entity);
         
         return Response.status(Response.Status.CREATED)
                 .entity(saved)
@@ -146,7 +146,7 @@ public class UsersResources {
     @PermitAll
     public JsonObject login (@Valid Credential credential){
         
-        User u = storeuser.login(credential).orElseThrow(() -> new NotAuthorizedException("User non Authorized",  
+        User u = userstore.login(credential).orElseThrow(() -> new NotAuthorizedException("User non Authorized",  
                                                                        Response.status(Response.Status.UNAUTHORIZED).build()));
         String jwt = jwtManager.generate(u);
          
@@ -155,8 +155,7 @@ public class UsersResources {
                 .add("token",jwt)
                 .add("userid", u.getId())
                 .add("first_name", u.getFirstName())
-                .add("last_name", u.getLastName())
-                .add("role", u.getRoleuser().toString())
+                .add("last_name", u.getLastName().toString())
                 .build();
     }
     
@@ -173,8 +172,8 @@ public class UsersResources {
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed("Admin")
     public Response delete(@PathParam("id") Long id) {
-        User found = storeuser.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
-        storeuser.delete(found.getId());
+        User found = userstore.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
+        userstore.delete(found.getId());
         return Response.status(Response.Status.OK)
                 .build();
     }
@@ -191,9 +190,9 @@ public class UsersResources {
     })
     @RolesAllowed("Admin")
     public User update(@PathParam("id") Long id, @Valid User entity) {
-        User found = storeuser.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
+        User found = userstore.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
         entity.setId(id);
-        return storeuser.update(entity);
+        return userstore.update(entity);
     }
    
     

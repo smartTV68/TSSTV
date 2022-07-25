@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 
 /**
  *
@@ -22,11 +21,6 @@ public abstract class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
-        
-    @Version
-    protected Long version;
-    
-    protected boolean cancellato;
 
     public Long getId() {
         return id;
@@ -36,23 +30,7 @@ public abstract class BaseEntity implements Serializable {
         this.id = id;
     }
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-
-    public boolean isCancellato() {
-        return cancellato;
-    }
-
-    public void setCancellato(boolean cancellato) {
-        this.cancellato = cancellato;
-    }
-
-    
+   
     
     @Override
     public int hashCode() {
@@ -74,6 +52,11 @@ public abstract class BaseEntity implements Serializable {
         }
         final BaseEntity other = (BaseEntity) obj;
         return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "BaseEntity{" + "id=" + id + '}';
     }
     
 

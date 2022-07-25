@@ -97,7 +97,7 @@ public class JWTManager {
 
     private JSONArray loadGroups(User user) {
         JSONArray result = new JSONArray();
-        result.add(user.getRoleuser().toString());
+        result.add("users");
         return result;
     }
 }

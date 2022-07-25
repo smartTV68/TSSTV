@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import security.SecurityEncoding;
 import boundary.Credential;
+import javax.inject.Inject;
 import javax.persistence.NoResultException;
 
 /**
@@ -26,11 +27,12 @@ public class UserStore {
     @PersistenceContext
     EntityManager em;
     
-      
+     @Inject
+     BookmarkStore bookmarkstore;
     
     public List<User> all(){
         
-        return em.createQuery("select e from User e where e.cancellato = false order by e.lastName").getResultList();
+        return em.createQuery("select e from User e order by e.lastName").getResultList();
         
     }
     
@@ -51,10 +53,10 @@ public class UserStore {
     }
 
     public void delete(Long id) {
-        User found = em.find(User.class, id);
-        found.setCancellato(true);
-        update(found);
+        bookmarkstore.deleteByUserId(id);
+        em.remove(em.getReference(User.class, id));
     }
+    
 
     public User update(User entity) {
         
